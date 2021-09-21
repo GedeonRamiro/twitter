@@ -56,6 +56,7 @@ export const RightContainer = styled.div`
 export const Button = styled.button`
     background-color: #fff;
     color: #000;
+    outline: none;
     height: 49px;
     width: 381px;
     border-radius: 70px;
