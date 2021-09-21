@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTwitter } from "react-icons/fa";
+import  Button from "../Button";
 import Modal from "../Modal";
 import { CenterImage, Title } from "./styles"
 
@@ -12,12 +13,12 @@ const CreateAccountModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
             <CenterImage>
-                <FaTwitter color='#d9d9d9d' size={32} /> 
+                <FaTwitter color='#d9d9d9d' size={28} /> 
             </CenterImage>
             <Title>
-                <h1>Criar sua conta</h1>
+                Criar sua conta
             </Title>
-            <button>Faça login</button>
+            <Button height='47px' width='100%'>Avançar</Button>
         </Modal>
     )
 }
