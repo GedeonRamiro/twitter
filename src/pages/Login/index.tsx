@@ -6,7 +6,8 @@ import {
     RightContainer 
 } from "./styles"
 import { FaTwitter } from 'react-icons/fa'
-import CreateAccountMod from '../../components/CreateAccountModal'
+import CreateAccountModal from '../../components/CreateAccountModal'
+import LoginModal from '../../components/LoginModal'
 import { useState } from 'react'
 
 
@@ -17,9 +18,13 @@ const Login = () => {
 
     return (
         <Container>
-            <CreateAccountMod 
+            <CreateAccountModal 
                 isOpen={isCreateAccountModalOpen}
                 setIsOpen={setIsCreateAccountModalOpen} 
+            />
+            <LoginModal 
+                isOpen={isLoginModalOpen}
+                setIsOpen={setILoginModalOpen} 
             />
             <BackgroundConatiner>
                 <img src={Background} alt="Fundo fdo Twitter" />
@@ -31,7 +36,7 @@ const Login = () => {
                 <Button onClick={() => setIsCreateAccountModalOpen(true)}>
                     Inscreva-se com o email...
                 </Button>
-                <p>Já tem uma conta? <span> Entre </span></p>
+                <p>Já tem uma conta? <span onClick={() => setILoginModalOpen(true)} > Entre </span></p>
             </RightContainer>
         </Container>
     )
