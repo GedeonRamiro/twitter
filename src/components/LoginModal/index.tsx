@@ -9,6 +9,8 @@ import  Button from "../Button";
 import { Input } from "../Input";
 import Modal from "../Modal";
 import { CenterImage, InputContainer, Title } from "./styles"
+import { IAuth, useGlobalState } from '../../context/GlobalContext'
+
 
 
 interface IProps {
@@ -21,6 +23,7 @@ const LoginModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
+    const { setAuth } = useGlobalState()
 
     const history = useHistory()
     const isDisabled = email === '' || password === '' || loading
@@ -34,10 +37,11 @@ const LoginModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
 
         try{
         setLoading(true)
-        await api.post('/login', {
+        const { data }  = await api.post<IAuth>('/login', {
                 email,
                 password
             })
+          setAuth(data)
           history.push('/')  
         } catch(error){
             toast.error(error?.response?.data?.message || 'Não foi possível acessar a conta!')

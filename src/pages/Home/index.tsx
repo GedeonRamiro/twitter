@@ -1,8 +1,12 @@
+import { useGlobalState } from "../../context/GlobalContext";
 
 
 function App() {
+
+  const { auth } = useGlobalState()
+
   return (
-      <h1>Olá Mundo! MAC</h1>
+      <h1>Usuário logado: { auth?.user.name }</h1>
   );
 }
 

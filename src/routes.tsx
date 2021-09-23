@@ -3,31 +3,35 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
-
- import { ToastContainer } from 'react-toastify';
- import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRouter from "./components/ProtectedRouter";
+import { GlobalStateProvider } from "./context/GlobalContext";
 import Home from './pages/Home'  
 import Login from "./pages/Login";
 import { GlobalStyles } from "./styles/GlobalStyle";
 import ThemeProvider from './styles/ThemeProvider'
 
 
+
 const Routes: React.FC = () => {
     return (
-    <Router>
-      <GlobalStyles />
-        <ToastContainer theme='colored' />
-          <ThemeProvider>
-            <Switch> 
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route path="/login">
-                    <Login />
-                </Route>
-            </Switch>
-         </ThemeProvider>
-    </Router>
+    <GlobalStateProvider>
+      <Router>
+        <GlobalStyles />
+          <ToastContainer />
+            <ThemeProvider>
+              <Switch> 
+                  <ProtectedRouter exact path="/">
+                      <Home />
+                  </ProtectedRouter>
+                  <Route path="/login">
+                      <Login />
+                  </Route>
+              </Switch>
+          </ThemeProvider>
+      </Router>
+    </GlobalStateProvider>  
     )
 }
 
