@@ -9,7 +9,7 @@ function App() {
   apiWithAuth.get('/profile')  
 
   return (
-      <h1>Usuário logado: { auth?.user.name }</h1>
+      <h1>Usuário: { auth?.user.name }</h1>
   );
 }
 
