@@ -2,16 +2,14 @@
 import { apiWithAuth } from "../../services/api";
 import { useGlobalState } from "../../context/GlobalContext";
 
-function App() {
+import Sidebar from "../SideBar";
 
-  const { auth } = useGlobalState()
-
-  apiWithAuth.get('/profile')  
-
+const Home: React.FC = () => {
+  
   return (
-      <h1>Usuário: { auth?.user.name }</h1>
-  );
+    <Sidebar />
+  )
 }
 
 
-export default App;
+export default Home;

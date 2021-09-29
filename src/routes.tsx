@@ -9,6 +9,7 @@ import ProtectedRouter from "./components/ProtectedRouter";
 import { GlobalStateProvider } from "./context/GlobalContext";
 import Home from './pages/Home'  
 import Login from "./pages/Login";
+import Perfil from "./pages/Perfil";
 import { GlobalStyles } from "./styles/GlobalStyle";
 import ThemeProvider from './styles/ThemeProvider'
 
@@ -23,7 +24,10 @@ const Routes: React.FC = () => {
             <ThemeProvider>
               <Switch> 
                   <ProtectedRouter exact path="/">
-                      <Home />
+                    <Home />
+                  </ProtectedRouter>
+                  <ProtectedRouter path="/">
+                    <Perfil />
                   </ProtectedRouter>
                   <Route path="/login">
                       <Login />

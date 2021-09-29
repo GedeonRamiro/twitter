@@ -32,7 +32,7 @@ const LoginModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
         const validation = validadeLoginFiedls(email, password)
 
         if(typeof validation === 'string'){
-            toast.error(validation)
+            return toast.error(validation)
         }
 
         try{

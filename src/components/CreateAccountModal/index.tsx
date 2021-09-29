@@ -32,7 +32,7 @@ const CreateAccountModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
         const validation = validadeCreateAccountFiedls(name, username, email, password)
 
         if(typeof validation === 'string'){
-            toast.error(validation)
+            return toast.error(validation)
         }
         
         try{
