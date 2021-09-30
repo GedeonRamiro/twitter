@@ -10,7 +10,7 @@ export const InputContainer = styled.div<IProps>`
     align-items: center;
     width: 348px;
     background: #202327;
-    border: 1px solid 
+    border: 1px solid
     ${props => props.isOnFocus 
     ? props.theme.color.blue
     : '#253341'};
