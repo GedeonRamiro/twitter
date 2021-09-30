@@ -23,7 +23,7 @@ time, mark, audio, video {
  vertical-align: baseline;
  color:#fff;
  background-color: #000;
- font-family: 'DM Sans', sans-serif;
+ font-family: 'DM Sans', sans-serif;   
 }
 
 html {
@@ -52,6 +52,10 @@ q:before, q:after {
 table {
  border-collapse: collapse;
  border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 `
