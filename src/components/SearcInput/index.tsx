@@ -1,11 +1,24 @@
 
 import { useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
-import { InputContainer, Input, DropDawn } from './styles'
+import { InputContainer, Input, DropDown } from './styles'
+
+interface IUsers {
+    name: string;
+    username: string;
+}
+
+const mockUsers = [
+    {name: 'gedeon', username: 'gd'},
+    {name: 'ramiro', username: 'rmr'},
+]
 
 const SeachInput = () => {
 
     const [isOnFocus, setIsOnFocus] = useState(false)
+    const [users, setUsers] = useState<IUsers[]>(mockUsers)
+
+
 
     return (
          <InputContainer isOnFocus={isOnFocus}>
@@ -15,11 +28,13 @@ const SeachInput = () => {
                 onBlur={() => setIsOnFocus(false)}
                 onFocus={() => setIsOnFocus(true)}
             />
-            <DropDawn>
-                <h1>blblblldfgdfb</h1>
-                <h1>dhgdfdxfg</h1>
-                <h1>blblblghmjhjlb</h1>
-            </DropDawn>
+            {users && (
+                <DropDown>
+                    {users.map(user => (
+                        <h1>{user.name}</h1>
+                    ))}
+                </DropDown>
+            )}
         </InputContainer>
     )
 }
