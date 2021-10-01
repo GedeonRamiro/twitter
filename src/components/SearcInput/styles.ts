@@ -50,3 +50,34 @@ export const DropDown = styled.div`
     border-radius: 8px;
     padding: 20px;
 `
+
+export const UserContainer = styled.div `
+    display: flex;
+    align-items: center;
+
+    img {
+        height: 49px;
+        width: 49px;
+        border-radius: 50%;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 14px;
+    }
+
+`
+
+export const UserName = styled.div `
+    font-size: 15px;
+    margin-left: 10px;
+    line-height: 18px;
+
+    h1{
+        font-weight: 700;
+    }
+
+    h2 {
+        color: ${props => props.theme.color.gray}
+    }
+
+`
