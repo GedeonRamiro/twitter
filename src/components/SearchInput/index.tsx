@@ -10,7 +10,7 @@ interface IUsers {
 }
 
 
-const SeachInput = () => {
+const SearchInput = () => {
 
     const [isOnFocus, setIsOnFocus] = useState(false)
     const [users, setUsers] = useState<IUsers[]>()
@@ -62,4 +62,4 @@ const SeachInput = () => {
     )
 }
 
-export default SeachInput
+export default SearchInput
