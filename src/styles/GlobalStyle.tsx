@@ -22,7 +22,6 @@ time, mark, audio, video {
  font: inherit;
  vertical-align: baseline;
  color:#fff;
- background-color: #000;
  font-family: 'DM Sans', sans-serif;   
 }
 
