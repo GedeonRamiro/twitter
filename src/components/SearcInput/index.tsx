@@ -1,51 +1,61 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
+import api, { apiWithAuth } from '../../services/api'
 import { InputContainer, Input, DropDown, UserContainer, UserName } from './styles'
 
 interface IUsers {
-    id: string;
     name: string;
     username: string;
 }
 
-const mockUsers = [
-    {id: '1', name: 'gedeon', username: 'gedeon_goku'},
-    {id: '2', name: 'ramiro', username: 'ramiro_vejeta'},
-    {id: '3', name: 'bastos', username: 'bastos_gohan'},
-    {id: '4', name: 'costa', username: 'costa_truck'},
-    {id: '5', name: 'nicolas', username: 'nicolas_broly'},
-    {id: '7', name: 'davi', username: 'davi_gokublack'},
-    {id: '8', name: 'rayssa', username: 'rayssa_bulma'},
-]
 
 const SeachInput = () => {
 
     const [isOnFocus, setIsOnFocus] = useState(false)
-    const [users, setUsers] = useState<IUsers[]>(mockUsers)
+    const [users, setUsers] = useState<IUsers[]>()
+    const [search, setSearch] = useState('')
+    
+    const searchUsers = async () => {
+        const { data } = await apiWithAuth(`users?search=${search}`)
+        setUsers(data)
+    }
 
-
+    
+    useEffect(() => {
+            const timeut = setTimeout(() => {
+                searchUsers()
+            }, 800)
+    
+            return () => clearTimeout(timeut)
+    }, [search])
+    
 
     return (
          <InputContainer isOnFocus={isOnFocus}>
             <FiSearch />
-            <Input 
-                placeholder="Buscar no Twitter" 
+            <Input
+                value={search} 
+                placeholder='Buscar no Twitter' 
                 onBlur={() => setIsOnFocus(false)}
                 onFocus={() => setIsOnFocus(true)}
+                onChange={e => setSearch(e.target.value)}
             />
-            {users && (
+            {users && isOnFocus &&  (
                 <DropDown>
-                    {users.map(user => (
-                        <UserContainer>
-                            <img src={`https://lorempixel.com/400/400/cats/${user.id}`} />
+                    {users.length > 0 ? users.map((user, index) => (
+                        <UserContainer key={index}>
+                            <img src={`https://lorempixel.com/400/400/cats/${user.username}/`} />
                             <UserName> 
                                 <h1>{user.name}</h1>
                                 <h2>@{user.username}</h2>    
                             </UserName>
                         </UserContainer>
-                        
-                    ))}
+                    )) :
+                    <UserName> 
+                    <h1>usuário não encontrado</h1>
+                </UserName>
+                    }
                 </DropDown>
             )}
         </InputContainer>
