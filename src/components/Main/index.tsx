@@ -8,7 +8,7 @@ interface IProps {
 const Main: React.FC<IProps> = ( { children, fixedContent } ) => {
     return (
         <Container>
-           <FixedContent>{fixedContent}</FixedContent> 
+            <FixedContent>{fixedContent}</FixedContent> 
             <ScrollableContainer>{children}</ScrollableContainer>
         </Container>
     )
