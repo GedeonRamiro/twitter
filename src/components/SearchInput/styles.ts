@@ -6,6 +6,7 @@ interface IProps{
 
 
 export const InputContainer = styled.div<IProps>`
+    margin-top: 12px;
     width: 348px;
     padding: 13px;
     background: #202327;
@@ -18,6 +19,7 @@ export const InputContainer = styled.div<IProps>`
     display: flex;
     align-items: center;
     position: relative;
+    height: max-content;
 
     svg {
         stroke: ${props => props.isOnFocus 
