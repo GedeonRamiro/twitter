@@ -1,30 +1,26 @@
 
 import { apiWithAuth } from "../../services/api";
-import { useGlobalState } from "../../context/GlobalContext";
+import { IAuth, useGlobalState } from "../../context/GlobalContext";
 
 import PageWrapper from "../../components/PageWrapper";
 import { TweetButton, TweetContainer, TweetInput, UserName } from "./styles";
 import Button from "../../components/Button";
+import Tweet from "../../components/Twett";
 
-interface UserName {
-  name: string;
-
-}
 
 const Home = () => {
 
-
-  const { auth } = useGlobalState()
+  const { auth: {user} } = useGlobalState() as {auth: IAuth}
 
   return (
 
     <PageWrapper fixedContent={
       <>
       <UserName>
-        <h1>{auth?.user.name}</h1>
+        <h1>{user.name}</h1>
       </UserName>
       <TweetContainer>
-        <img src={`https://lorempixel.com/400/400/cats/${auth?.user.username}/`} />
+        <img src={`https://lorempixel.com/400/400/cats/${user.username}/`} />
         <TweetInput placeholder="O que está acontecendo?" />
       </TweetContainer>
       <TweetButton>
@@ -32,50 +28,73 @@ const Home = () => {
       </TweetButton>
       </>
     }>
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
-             <h1>Meu primeiro Tweet!</h1> 
-             <h1>Meu segundo Tweet!</h1> 
-             <h1>Meu terceiro Tweet!</h1>
-             <div style={{paddingTop: "50px", paddingBottom: "50px"}}></div> 
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+      <Tweet name={user.name} username={user.username}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Rerum suscipit hic officiis debitis, harum quas commodi 
+            voluptas aliquid numquam nostrum. Corporis deserunt officia 
+            voluptates tempore distinctio aliquam quos incidunt commodi?
+      </Tweet>
+             
       </ PageWrapper>
   )
 }
