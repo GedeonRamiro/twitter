@@ -7,16 +7,16 @@ export const UserName = styled.div`
     padding-bottom: 25px;
     padding-top: 25px;
     border-bottom: 1px solid ${props => props.theme.color.borderColor};
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
 `
 
 export const TweetContainer = styled.div`
     margin-top:  10px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
     
     img{
         border-radius: 50%;
