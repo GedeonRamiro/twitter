@@ -7,6 +7,8 @@ import { TweetButton, TweetContainer, TweetInput, UserName } from "./styles";
 import Button from "../../components/Button";
 import Tweet from "../../components/Twett";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+
 
 interface ITweet {
       id: string,
@@ -22,15 +24,35 @@ interface ITweet {
 
 const Home = () => {
 
-      const [tweets, setTweets] = useState<ITweet[]>([])
-
   const { auth: {user} } = useGlobalState() as {auth: IAuth}
+  
+  const [tweets, setTweets] = useState<ITweet[]>([])
+  const [content, setContent] = useState('')
+  const [loading, setLoading] = useState(false)
 
+  console.log(content)
+  
   const getTweet = async () => {
-
       const { data } = await apiWithAuth.get<ITweet[]>('/feed')
       setTweets(data)
   }
+
+  const createTweet = async () => {
+    setLoading(true)
+
+    try {
+      await apiWithAuth.post<ITweet[]>('/tweets', { content })
+       
+       setContent('')
+       await getTweet()
+      
+    } catch (error) {
+      console.log(error)
+      toast.error(error?.response?.data?.message.join(', ') || 'Não foi possível criar Tweet!', {theme: "dark"})
+    }
+
+    setLoading(false)
+}
 
   useEffect(() => {
         getTweet()
@@ -46,10 +68,13 @@ const Home = () => {
       </UserName>
       <TweetContainer>
         <img src={`https://lorempixel.com/400/400/cats/${user.username}/`} />
-        <TweetInput placeholder="O que está acontecendo?" />
+        <TweetInput placeholder="O que está acontecendo?" 
+        value={content}
+          onChange={event => setContent(event.target.value)}
+        />
       </TweetContainer>
       <TweetButton>
-          <Button>Tweet</Button>
+          <Button onClick={createTweet} isDisabled={loading || content === ''}>Tweet</Button>
       </TweetButton>
       </>
     }>
