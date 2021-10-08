@@ -29,8 +29,6 @@ const Home = () => {
   const [tweets, setTweets] = useState<ITweet[]>([])
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(false)
-
-  console.log(content)
   
   const getTweet = async () => {
       const { data } = await apiWithAuth.get<ITweet[]>('/feed')
