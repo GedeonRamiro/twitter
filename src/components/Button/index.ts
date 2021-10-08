@@ -4,12 +4,14 @@ interface IProps {
     width?: string
     height?: string
     isDisabled?: boolean
+    background?: string
+    border?: string
 }
 
 
 const Button = styled.button<IProps>`
-    background-color: ${(props) => props.theme.color.blue};
-    border: none;
+    background: ${(props) => props.background || props.theme.color.blue};
+    border: ${(props) => props.border || 'none'}; 
     outline: none;
     border-radius: 53px;
     cursor: pointer;
