@@ -8,7 +8,6 @@ import { apiWithAuth } from "../../services/api"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import Tweet from "../../components/Twett"
-import EditModalProfile from "../../components/EditModalProfile"
 
 
 
@@ -32,8 +31,7 @@ interface IProfile{
 
 const Perfil = () => {
     
-  const [profile, setProfile] = useState<IProfile>()
-  const [isEditProfilModalOpen, setIsEditProfilModalOpen] = useState(false)
+  const [profile, setProfile] = useState<IProfile>() 
 
   const getprofile = async () => {
     try {
@@ -54,34 +52,24 @@ const Perfil = () => {
       
       <PageWrapper
         fixedContent={
-          <>
-          {profile && (
-            <FixedContentContainer>
-              <Link to='/'>
-                  <BsArrowLeft size={25} />
-              </Link>
-              <FixedContentTexts>
-                <h1>{profile?.name}</h1>
-                <h2>{profile?.tweets.length} Tweets</h2>
-              </FixedContentTexts>  
-            </FixedContentContainer>
-          )}
-          </>  
+          <FixedContentContainer>
+            <Link to='/'>
+                <BsArrowLeft size={25} />
+            </Link>
+            <FixedContentTexts>
+              <h1>{profile?.name}</h1>
+              <h2>{profile?.tweets.length} Tweets</h2>
+            </FixedContentTexts>  
+          </FixedContentContainer>
         }
       >
 
-        <EditModalProfile isOpen={isEditProfilModalOpen} setIsOpen={setIsEditProfilModalOpen} />
-
         {profile && (
+
           <>
             <ImageContainer>
               <img src={`https://lorempixel.com/400/400/cats/${profile?.username}/`} alt={profile?.username} />
-              <Button 
-                  background='transparent' 
-                  border='1px solid #6d777c' 
-                  onClick={() => setIsEditProfilModalOpen(true)}>
-                    Editar perfil
-              </Button>
+              <Button background='transparent' border='1px solid #6d777c'>Editar perfil</Button>
           </ImageContainer>
           <TextContainer>
             <Name>{profile.name}</Name>
