@@ -1,5 +1,7 @@
+import Button from '../Button'
 import Modal from '../Modal/'
-import { Container } from './styles'
+import { ModalHeader } from './styles'
+import {MdClose} from 'react-icons/md'
 
 interface IProps {
     isOpen: boolean;
@@ -7,13 +9,15 @@ interface IProps {
 }
 
 
-const EditModalProfile:React.FC<IProps> = ({ isOpen, setIsOpen}) => {
+const EditModalProfile:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
     return (
-        <Container>
-            <Modal isOpen={isOpen} setIsOpen={setIsOpen} >
-                Modal profile
-            </Modal>
-        </Container>
+        <Modal isOpen={isOpen} setIsOpen={setIsOpen} >
+            <ModalHeader>
+                <MdClose size={30}/>
+                <h1>Editar Perfil</h1>
+                <Button>Salvar</Button>
+            </ModalHeader>
+        </Modal>
     )
 }
 
