@@ -11,7 +11,7 @@ const Modal:React.FC<IProps> = ({ children, isOpen, setIsOpen, onClose }) => {
     const handleOnClose = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if(event.target === event.currentTarget){
             setIsOpen(false)
-            onClose!()
+            onClose && onClose()
         }
     }
 
