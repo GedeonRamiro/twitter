@@ -8,7 +8,7 @@ interface IProps {
 const Tweet: React.FC<IProps> = ({ children, name, username }) => {
     return (
         <Container>
-            <img src={`https://lorempixel.com/400/400/cats/${name}/`} />
+            <img src={`https://lorempixel.com/400/400/cats/${username}/`} />
             <div> 
             <TweetNames>
                     <h1>{name}</h1>
