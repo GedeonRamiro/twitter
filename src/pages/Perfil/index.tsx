@@ -8,7 +8,7 @@ import { apiWithAuth } from "../../services/api"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import Tweet from "../../components/Twett"
-
+import EditModalProfile from "../../components/EditModalProfile"
 
 
 interface ITweets {
@@ -31,7 +31,8 @@ interface IProfile{
 
 const Perfil = () => {
     
-  const [profile, setProfile] = useState<IProfile>() 
+  const [profile, setProfile] = useState<IProfile>()
+  const [isEditProfileOpenModal, setIsEditProfileOpenModal] = useState(false)
 
   const getprofile = async () => {
     try {
@@ -49,9 +50,10 @@ const Perfil = () => {
   
   return (
       
-      
       <PageWrapper
         fixedContent={
+          <>
+            {profile && (
           <FixedContentContainer>
             <Link to='/'>
                 <BsArrowLeft size={25} />
@@ -60,16 +62,26 @@ const Perfil = () => {
               <h1>{profile?.name}</h1>
               <h2>{profile?.tweets.length} Tweets</h2>
             </FixedContentTexts>  
-          </FixedContentContainer>
+            </FixedContentContainer>
+            )}
+            </>
         }
       >
+
+        <EditModalProfile isOpen={isEditProfileOpenModal} setIsOpen={setIsEditProfileOpenModal} />
 
         {profile && (
 
           <>
             <ImageContainer>
               <img src={`https://lorempixel.com/400/400/cats/${profile?.username}/`} alt={profile?.username} />
-              <Button background='transparent' border='1px solid #6d777c'>Editar perfil</Button>
+              <Button 
+                background='transparent' 
+                border='1px solid #6d777c'
+                onClick={() => setIsEditProfileOpenModal(true)}
+              >
+                Editar perfil
+              </Button>
           </ImageContainer>
           <TextContainer>
             <Name>{profile.name}</Name>

@@ -6,6 +6,7 @@ interface IProps {
     isDisabled?: boolean
     background?: string
     border?: string
+    color?: string
 }
 
 
@@ -19,7 +20,7 @@ const Button = styled.button<IProps>`
     font-style: normal;
     font-weight: 700;
     line-height: 18px;
-    color: #fff;
+    color: ${props => props.color || '#fff'};
     width: ${(props => props.width || '105px')};
     height: ${(props => props.height || '39px')};
     opacity: ${props => props.isDisabled ? 0.3 : 1};
