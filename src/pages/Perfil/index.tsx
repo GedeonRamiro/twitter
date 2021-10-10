@@ -34,7 +34,7 @@ const Perfil = () => {
   const [profile, setProfile] = useState<IProfile>()
   const [isEditProfileOpenModal, setIsEditProfileOpenModal] = useState(false)
 
-  const getprofile = async () => {
+  const getProfile = async () => {
     try {
       const {data} = await apiWithAuth.get('/profile')
       setProfile(data)
@@ -45,7 +45,7 @@ const Perfil = () => {
   }
   
   useEffect(() => {
-    getprofile()
+    getProfile()
   }, [])
   
   return (
@@ -68,7 +68,11 @@ const Perfil = () => {
         }
       >
 
-        <EditModalProfile isOpen={isEditProfileOpenModal} setIsOpen={setIsEditProfileOpenModal} />
+        <EditModalProfile 
+          isOpen={isEditProfileOpenModal} 
+          setIsOpen={setIsEditProfileOpenModal} 
+          getProfile={getProfile}
+        />
 
         {profile && (
 
