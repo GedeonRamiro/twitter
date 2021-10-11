@@ -77,7 +77,7 @@ const EditModalProfile:React.FC<IProps> = ({ isOpen, setIsOpen, getProfile }) =>
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen} onClose={handleOnCloseModal}>
             <ModalHeader>
-                <MdClose size={30} onClick={() => handleOnCloseModal}/>
+                <MdClose size={30} onClick={() => handleOnCloseModal()}/>
                 <h1>Editar Perfil</h1>
                 <Button 
                     background='#fff' 
