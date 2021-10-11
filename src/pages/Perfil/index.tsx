@@ -95,7 +95,7 @@ const Perfil = () => {
               <FaRegCalendarAlt size={18}/>
               <p>Ingressou em {' '}
                 {new Date(profile.created_at).toLocaleDateString('pt-BR', {month: 'long'})} 
-                de {' '} 
+                {' '} de {' '} 
                 {new Date(profile.created_at).getFullYear()}</p>
             </CreateAt>  
               <Follower>
