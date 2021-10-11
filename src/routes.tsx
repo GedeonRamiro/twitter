@@ -26,7 +26,10 @@ const Routes: React.FC = () => {
                   <ProtectedRouter exact path="/">
                     <Home />
                   </ProtectedRouter>
-                  <ProtectedRouter path="/perfil">
+                  <ProtectedRouter exact path="/perfil">
+                    <Perfil />
+                  </ProtectedRouter>
+                  <ProtectedRouter path="/perfil/:username">
                     <Perfil />
                   </ProtectedRouter>
                   <Route path="/login">
