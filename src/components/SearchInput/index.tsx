@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
-import api, { apiWithAuth } from '../../services/api'
+import { apiWithAuth } from '../../services/api'
 import { InputContainer, Input, DropDown, UserContainer, UserName } from './styles'
 
 interface IUsers {
@@ -35,14 +35,16 @@ const SearchInput = () => {
          <InputContainer isOnFocus={isOnFocus}>
             <FiSearch />
             <Input
+                id='search-user-input'
                 value={search} 
                 placeholder='Buscar no Twitter' 
-                onBlur={() => setIsOnFocus(false)}
                 onFocus={() => setIsOnFocus(true)}
                 onChange={e => setSearch(e.target.value)}
             />
             {users && isOnFocus &&  (
-                <DropDown>
+                <DropDown onMouseLeave={() => {setIsOnFocus(false)
+                    document.getElementById('search-user-input')?.blur()}
+                } >
                     {users.length > 0 ? users.map((user, index) => (
                         <UserContainer key={index}>
                             <img src={`https://lorempixel.com/400/400/cats/${user.username}/`} />
