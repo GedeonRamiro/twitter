@@ -28,6 +28,7 @@ interface IProfile{
   number_of_followers: number
   number_of_follows: number
   tweets:ITweets[]
+  isFollowing: boolean
 }
 
 interface IParams {
@@ -44,11 +45,11 @@ const Perfil = () => {
   const { username } = useParams<IParams>()
 
   const isMyProfile = !username || username === user.username
-
+  console.log(isMyProfile)
 
   const getProfile = async () => {
     try {
-      const {data} = await apiWithAuth.get('/profile')
+      const {data} = await apiWithAuth.get(isMyProfile ? '/profile' : `users/${username}`)
       setProfile(data)
       
     } catch (error) {
@@ -91,13 +92,24 @@ const Perfil = () => {
           <>
             <ImageContainer>
               <img src={`https://lorempixel.com/400/400/cats/${profile?.username}/`} alt={profile?.username} />
-              <Button 
-                background='transparent' 
-                border='1px solid #6d777c'
-                onClick={() => setIsEditProfileOpenModal(true)}
+              {isMyProfile ? (
+                 <Button 
+                 background='transparent' 
+                 border='1px solid #6d777c'
+                 onClick={() => setIsEditProfileOpenModal(true)}
+               >
+                 Editar perfil
+               </Button>
+              ) : (
+                <Button 
+                  background={profile.isFollowing ? 'transparent' : '#fff'}
+                  color={profile.isFollowing ? '#fff' : '#000'} 
+                  //border='1px solid #6d777c'
+                  border={`${profile.isFollowing ? '1px solid #6d777c' : ' none'}`}
               >
-                Editar perfil
+                {profile.isFollowing ? 'Seguindo' : 'seguir'}
               </Button>
+              )}
           </ImageContainer>
           <TextContainer>
             <Name>{profile.name}</Name>
