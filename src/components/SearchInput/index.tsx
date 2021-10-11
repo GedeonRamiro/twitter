@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
 import { apiWithAuth } from '../../services/api'
 import { InputContainer, Input, DropDown, UserContainer, UserName } from './styles'
@@ -46,13 +47,15 @@ const SearchInput = () => {
                     document.getElementById('search-user-input')?.blur()}
                 } >
                     {users.length > 0 ? users.map((user, index) => (
-                        <UserContainer key={index}>
+                      <Link key={index} to='' >
+                        <UserContainer>
                             <img src={`https://lorempixel.com/400/400/cats/${user.username}/`} />
                             <UserName> 
                                 <h1>{user.name}</h1>
                                 <h2>@{user.username}</h2>    
                             </UserName>
                         </UserContainer>
+                        </Link>
                     )) :
                     <UserName> 
                     <h1>usuário não encontrado</h1>

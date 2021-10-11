@@ -59,7 +59,7 @@ const Perfil = () => {
   
   useEffect(() => {
     getProfile()
-  }, [])
+  }, [username])
   
   return (
       
@@ -104,7 +104,6 @@ const Perfil = () => {
                 <Button 
                   background={profile.isFollowing ? 'transparent' : '#fff'}
                   color={profile.isFollowing ? '#fff' : '#000'} 
-                  //border='1px solid #6d777c'
                   border={`${profile.isFollowing ? '1px solid #6d777c' : ' none'}`}
               >
                 {profile.isFollowing ? 'Seguindo' : 'seguir'}
