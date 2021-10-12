@@ -47,7 +47,7 @@ const SearchInput = () => {
                     document.getElementById('search-user-input')?.blur()}
                 } >
                     {users.length > 0 ? users.map((user, index) => (
-                      <Link key={index} to='' >
+                      <Link key={index} to={`/perfil/${user.username}`} >
                         <UserContainer>
                             <img src={`https://lorempixel.com/400/400/cats/${user.username}/`} />
                             <UserName> 
