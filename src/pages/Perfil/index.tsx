@@ -12,6 +12,7 @@ import EditModalProfile from "../../components/EditModalProfile"
 import { IAuth, useGlobalState } from "../../context/GlobalContext"
 
 
+
 interface ITweets {
   id:	string
   content:	string
@@ -39,13 +40,13 @@ const Perfil = () => {
     
   const [profile, setProfile] = useState<IProfile>()
   const [isEditProfileOpenModal, setIsEditProfileOpenModal] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const { auth: {user} } = useGlobalState() as {auth: IAuth}
 
   const { username } = useParams<IParams>()
 
   const isMyProfile = !username || username === user.username
-  console.log(isMyProfile)
 
   const getProfile = async () => {
     try {
@@ -54,6 +55,33 @@ const Perfil = () => {
       
     } catch (error) {
       toast.error(error?.response?.data?.message || 'Não foi possível acessar o perfil!', {theme: 'dark'})
+    }
+    setLoading(false)
+  }
+
+  const follows  = async (follow_user_id: string) => {
+    setLoading(true)
+    try {
+        await apiWithAuth.post('/follows', {
+          follow_user_id,
+        })
+        getProfile()
+    } catch (error) {
+      console.log({error})
+      toast.error(error?.response?.data?.message?.join(', ') || 'Não foi possível seguir o usuário!', {theme: 'dark'})
+    }
+  }
+
+  const unfollows  = async (follow_user_id: string) => {
+    setLoading(true)
+    try {
+        await apiWithAuth.delete('/follows', {
+          data: {follow_user_id,}
+        })
+        getProfile()
+    } catch (error) {
+      console.log({error})
+      toast.error(error?.response?.data?.message?.join(', ') || 'Erro unfollows!', {theme: 'dark'})
     }
   }
   
@@ -91,7 +119,7 @@ const Perfil = () => {
 
           <>
             <ImageContainer>
-              <img src={`https://lorempixel.com/400/400/cats/${profile?.username}/`} alt={profile?.username} />
+              <img src={`https://robohash.org/${profile?.username}/`} alt={profile?.username} />
               {isMyProfile ? (
                  <Button 
                  background='transparent' 
@@ -100,15 +128,27 @@ const Perfil = () => {
                >
                  Editar perfil
                </Button>
-              ) : (
-                <Button 
-                  background={profile.isFollowing ? 'transparent' : '#fff'}
-                  color={profile.isFollowing ? '#fff' : '#000'} 
-                  border={`${profile.isFollowing ? '1px solid #6d777c' : ' none'}`}
-              >
-                {profile.isFollowing ? 'Seguindo' : 'seguir'}
-              </Button>
-              )}
+              ) : profile.isFollowing ? (
+                  <Button 
+                    background='transparent' 
+                    border='1px solid #6d777c' 
+                    onClick={() => unfollows(profile.id)}
+                    isDisabled={loading}
+                  >
+                    Seguindo
+                  </Button>
+                ) : (
+                  <Button 
+                    background='#fff' 
+                    color='#000' 
+                    onClick={() => follows(profile.id)}
+                    isDisabled={loading}
+                  >
+                    Seguir
+                  </Button>
+                )
+                
+              }
           </ImageContainer>
           <TextContainer>
             <Name>{profile.name}</Name>
