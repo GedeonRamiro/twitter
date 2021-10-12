@@ -65,7 +65,7 @@ const Home = () => {
         <h1>{user.name}</h1>
       </UserName>
       <TweetContainer>
-        <img src={`https://lorempixel.com/400/400/cats/${user.username}/`} />
+        <img src={`https://robohash.org/${user.username}/`} />
         <TweetInput placeholder="O que está acontecendo?" 
         value={content}
           onChange={event => setContent(event.target.value)}

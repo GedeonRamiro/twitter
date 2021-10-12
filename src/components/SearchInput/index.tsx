@@ -49,7 +49,7 @@ const SearchInput = () => {
                     {users.length > 0 ? users.map((user, index) => (
                       <Link key={index} to={`/perfil/${user.username}`} >
                         <UserContainer>
-                            <img src={`https://lorempixel.com/400/400/cats/${user.username}/`} />
+                            <img src={`https://robohash.org/${user.username}/`} />
                             <UserName> 
                                 <h1>{user.name}</h1>
                                 <h2>@{user.username}</h2>    
