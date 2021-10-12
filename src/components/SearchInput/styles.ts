@@ -54,6 +54,14 @@ export const DropDown = styled.div`
     overflow: auto;
     max-height: 575px;
 
+    a{
+        display: block;
+    }
+
+    a:not(:last-child){
+        margin-bottom: 14px;
+    }
+
     &::-webkit-scrollbar {
         width: 10px;
     }
