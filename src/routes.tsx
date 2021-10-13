@@ -10,6 +10,7 @@ import { GlobalStateProvider } from "./context/GlobalContext";
 import Home from './pages/Home'  
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
+import Seguidores from './pages/Seguidores'
 import { GlobalStyles } from "./styles/GlobalStyle";
 import ThemeProvider from './styles/ThemeProvider'
 
@@ -28,6 +29,9 @@ const Routes: React.FC = () => {
                   </ProtectedRouter>
                   <ProtectedRouter exact path="/perfil">
                     <Perfil />
+                  </ProtectedRouter>
+                  <ProtectedRouter exact path="/perfil/seguidores">
+                    <Seguidores />
                   </ProtectedRouter>
                   <ProtectedRouter path="/perfil/:username">
                     <Perfil />

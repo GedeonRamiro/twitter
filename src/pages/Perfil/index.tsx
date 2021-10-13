@@ -160,11 +160,13 @@ const Perfil = () => {
                 {new Date(profile.created_at).toLocaleDateString('pt-BR', {month: 'long'})} 
                 {' '} de {' '} 
                 {new Date(profile.created_at).getFullYear()}</p>
-            </CreateAt>  
+            </CreateAt>
+            <Link to='/perfil/seguidores'>
               <Follower>
                 <p>{profile.number_of_follows} <span>seguindo</span></p>
                 <p>{profile.number_of_followers} <span>seguidores</span></p>
               </Follower>
+            </Link>  
           </TextContainer>
 
           {profile.tweets.map(tweet => (
