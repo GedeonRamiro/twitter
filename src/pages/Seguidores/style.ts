@@ -46,3 +46,33 @@ export const FollowerTitle = styled.h1<IProps>`
     color: ${props => props.isAction ? '#D9D9D9' : '#6D777C'};
     border-bottom: 3px solid ${props => props.isAction ? props.theme.color.blue : 'transparent'};
 `
+
+export const UserContainer = styled.div`
+    display: flex;
+    margin: 22px 20px;
+
+    img{
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+`
+
+export const UserText = styled.div`
+    font-size: 15px;
+    line-height: 18px;
+
+    h1{
+        font-weight:  700;
+    }
+
+    h2{
+        color: ${props => props.theme.color.gray};
+    }
+
+    p{
+        margin-top: 8px;
+    }
+`
