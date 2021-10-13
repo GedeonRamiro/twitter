@@ -31,7 +31,7 @@ export const Button = styled.button<IProps>`
     border-radius: 53px;
     background-color: ${props => 
         props.isSelected ? props.theme.color.blue + "20" : "none"};
-        outline: none;
+    outline: none;
         
 `
 
