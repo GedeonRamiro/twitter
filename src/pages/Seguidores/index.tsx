@@ -51,7 +51,7 @@ const Seguidores = () => {
 
     useEffect(() => {
         getFollows()
-    }, [])
+    }, [username])
 
     return (
         <PageWrapper
