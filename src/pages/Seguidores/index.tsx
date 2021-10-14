@@ -1,6 +1,6 @@
 import PageWrapper from "../../components/PageWrapper"
 import {BsArrowLeft} from 'react-icons/bs'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import {
     FixedContentContainer, 
     FixedContentTexts, 
@@ -38,6 +38,7 @@ const Seguidores = () => {
     const [data, setData] = useState<IFollows>()
     const [showFollows, setShowFollows] = useState(true)
     const  { username } = useParams<IParams>()
+    const history = useHistory()
 
     const isMyFollowPage = !username
 
@@ -57,9 +58,7 @@ const Seguidores = () => {
             fixedContent={
              <>   
                 <FixedContentContainer>
-                    <Link to='/perfil'>
-                        <BsArrowLeft size={25} />
-                    </Link>
+                        <BsArrowLeft size={25} onClick={() => history.goBack()} />
                     <FixedContentTexts>
                         <h1>{isMyFollowPage ? user.name : data?.name}</h1>
                     </FixedContentTexts>  

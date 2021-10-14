@@ -1,7 +1,7 @@
 import PageWrapper from "../../components/PageWrapper"
 import {BsArrowLeft} from 'react-icons/bs'
 import {FaRegCalendarAlt} from 'react-icons/fa'
-import { Link, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 import { Bio, CreateAt, FixedContentContainer, FixedContentTexts, Follower, ImageContainer, Name, TextContainer, UserName } from "./styles"
 import Button from "../../components/Button"
 import { apiWithAuth } from "../../services/api"
@@ -41,6 +41,7 @@ const Perfil = () => {
   const [profile, setProfile] = useState<IProfile>()
   const [isEditProfileOpenModal, setIsEditProfileOpenModal] = useState(false)
   const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
   const { auth: {user} } = useGlobalState() as {auth: IAuth}
 
@@ -96,9 +97,7 @@ const Perfil = () => {
           <>
             {profile && (
           <FixedContentContainer>
-            <Link to='/'>
-                <BsArrowLeft size={25} />
-            </Link>
+                <BsArrowLeft size={25} onClick={() => history.goBack()} />
             <FixedContentTexts>
               <h1>{profile?.name}</h1>
               <h2>{profile?.tweets.length} Tweets</h2>
