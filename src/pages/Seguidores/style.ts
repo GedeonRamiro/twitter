@@ -42,6 +42,7 @@ export const FollowerTitle = styled.h1<IProps>`
     font-size: 15px;
     line-height: 18px;
     padding: 23px 0;
+    cursor: pointer;
     text-align: center;
     color: ${props => props.isAction ? '#D9D9D9' : '#6D777C'};
     border-bottom: 3px solid ${props => props.isAction ? props.theme.color.blue : 'transparent'};
