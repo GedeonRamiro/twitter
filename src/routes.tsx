@@ -33,8 +33,11 @@ const Routes: React.FC = () => {
                   <ProtectedRouter exact path="/perfil/seguidores">
                     <Seguidores />
                   </ProtectedRouter>
-                  <ProtectedRouter path="/perfil/:username">
+                  <ProtectedRouter exact path="/perfil/:username">
                     <Perfil />
+                  </ProtectedRouter>
+                  <ProtectedRouter exact path="/perfil/:username/seguidores">
+                    <Seguidores />
                   </ProtectedRouter>
                   <Route path="/login">
                       <Login />

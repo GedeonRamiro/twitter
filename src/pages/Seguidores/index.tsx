@@ -1,6 +1,6 @@
 import PageWrapper from "../../components/PageWrapper"
 import {BsArrowLeft} from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import {
     FixedContentContainer, 
     FixedContentTexts, 
@@ -22,8 +22,13 @@ interface IUser {
 }
 
 interface IFollows{
+    name: string
     follows: IUser[]
     followers: IUser[]
+}
+
+interface IParams {
+    username: string,
 }
 
 const Seguidores = () => {
@@ -32,10 +37,14 @@ const Seguidores = () => {
 
     const [data, setData] = useState<IFollows>()
     const [showFollows, setShowFollows] = useState(true)
-    console.log(data?.followers)
+    const  { username } = useParams<IParams>()
+
+    const isMyFollowPage = !username
 
     const getFollows = async () => {
-        const { data } = await apiWithAuth.get<IFollows>('profile/follows')
+        const { data } = await apiWithAuth.get<IFollows>(
+            isMyFollowPage ? 'profile/follows' : `users/${username}/follows`
+        )
         setData(data)
     }
 
@@ -52,7 +61,7 @@ const Seguidores = () => {
                         <BsArrowLeft size={25} />
                     </Link>
                     <FixedContentTexts>
-                        <h1>{user.name}</h1>
+                        <h1>{isMyFollowPage ? user.name : data?.name}</h1>
                     </FixedContentTexts>  
                 </FixedContentContainer>
                 <FollowerContainer>
