@@ -26,10 +26,10 @@ const SearchInput = () => {
     useEffect(() => {
             const timeut = setTimeout(() => {
                 searchUsers()
-                // eslint-disable-next-line react-hooks/exhaustive-deps
             }, 800)
-    
+            
             return () => clearTimeout(timeut)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search])
     
 

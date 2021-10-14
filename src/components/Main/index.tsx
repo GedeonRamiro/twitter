@@ -1,4 +1,4 @@
-import { Children } from 'react'
+
 import { Container, FixedContent, ScrollableContainer } from './styles'
 
 interface IProps {
