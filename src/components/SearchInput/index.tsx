@@ -26,6 +26,7 @@ const SearchInput = () => {
     useEffect(() => {
             const timeut = setTimeout(() => {
                 searchUsers()
+                // eslint-disable-next-line react-hooks/exhaustive-deps
             }, 800)
     
             return () => clearTimeout(timeut)
@@ -49,7 +50,7 @@ const SearchInput = () => {
                     {users.length > 0 ? users.map((user, index) => (
                       <Link key={index} to={`/perfil/${user.username}`} >
                         <UserContainer>
-                            <img src={`https://robohash.org/${user.username}/`} />
+                            <img src={`https://robohash.org/${user.username}/`}  alt={user.name}/>
                             <UserName> 
                                 <h1>{user.name}</h1>
                                 <h2>@{user.username}</h2>    
