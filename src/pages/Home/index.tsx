@@ -1,7 +1,7 @@
 
-import api, { apiWithAuth } from "../../services/api";
+import { apiWithAuth } from "../../services/api";
 import { IAuth, useGlobalState } from "../../context/GlobalContext";
-
+import { Link } from 'react-router-dom'
 import PageWrapper from "../../components/PageWrapper";
 import { TweetButton, TweetContainer, TweetInput, UserName } from "./styles";
 import Button from "../../components/Button";
@@ -77,9 +77,11 @@ const Home = () => {
       </>
     }>
       {tweets.map(tweet =>(
-      <Tweet name={tweet.user.name} username={tweet.user.username} key={tweet.id}>
-           {tweet.content}
-      </Tweet>
+        <Link to={`perfil/${tweet.user.username}`}>
+          <Tweet name={tweet.user.name} username={tweet.user.username} key={tweet.id}>
+              {tweet.content}
+          </Tweet>
+        </Link>
       ))}
      
       </ PageWrapper>
