@@ -161,7 +161,7 @@ const Perfil = () => {
                 {' '} de {' '} 
                 {new Date(profile.created_at).getFullYear()}</p>
             </CreateAt>
-            <Link to='/perfil/seguidores'>
+            <Link to={isMyProfile ? '/perfil/seguidores' : `/perfil/${profile.username}/seguidores` }>
               <Follower>
                 <p>{profile.number_of_follows} <span>seguindo</span></p>
                 <p>{profile.number_of_followers} <span>seguidores</span></p>
