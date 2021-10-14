@@ -55,7 +55,9 @@ const Perfil = () => {
       setProfile(data)
       
     } catch (error) {
-      toast.error(error?.response?.data?.message || 'Não foi possível acessar o perfil!', {theme: 'dark'})
+      toast.error(error?.response?.data?.message 
+        || 'Não foi possível acessar o perfil!', 
+        {theme: 'dark'})
     }
     setLoading(false)
   }
@@ -69,7 +71,9 @@ const Perfil = () => {
         getProfile()
     } catch (error) {
       console.log({error})
-      toast.error(error?.response?.data?.message?.join(', ') || 'Não foi possível seguir o usuário!', {theme: 'dark'})
+      toast.error(error?.response?.data?.message?.join(', ') || 
+        'Não foi possível seguir o usuário!', 
+        {theme: 'dark'})
     }
   }
 
@@ -82,7 +86,9 @@ const Perfil = () => {
         getProfile()
     } catch (error) {
       console.log({error})
-      toast.error(error?.response?.data?.message?.join(', ') || 'Erro unfollows!', {theme: 'dark'})
+      toast.error(error?.response?.data?.message?.join(', ') || 
+      'Erro unfollows!', 
+      {theme: 'dark'})
     }
   }
   

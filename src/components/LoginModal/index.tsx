@@ -32,7 +32,7 @@ const LoginModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
         const validation = validadeLoginFiedls(email, password)
 
         if(typeof validation === 'string'){
-            return toast.error(validation)
+            return toast.error(validation, {theme: 'dark'})
         }
 
         try{
@@ -44,7 +44,8 @@ const LoginModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
           setAuth(data)
           history.push('/')  
         } catch(error){
-            toast.error(error?.response?.data?.message || 'Não foi possível acessar a conta!')
+            toast.error(error?.response?.data?.message || 
+                'Não foi possível acessar a conta!', {theme: 'dark'})
         }
         setLoading(false)
     }

@@ -32,7 +32,7 @@ const CreateAccountModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
         const validation = validadeCreateAccountFiedls(name, username, email, password)
 
         if(typeof validation === 'string'){
-            return toast.error(validation)
+            return toast.error(validation, {theme: 'dark'})
         }
         
         try{
@@ -42,10 +42,12 @@ const CreateAccountModal:React.FC<IProps> = ({ isOpen, setIsOpen }) => {
                 email,
                 password
             })
-            toast.success('Conta criada com sucesso!')
+            toast.success('Conta criada com sucesso!', {theme: 'dark'})
         } catch(error){
             console.log({error})
-            toast.error(error?.response?.data?.message || 'ANão foi possível criar a conta!')
+            toast.error(error?.response?.data?.message.join(', ') || 
+            'Não foi possível criar a conta!', 
+            {theme: 'dark'})
         }
         
     }

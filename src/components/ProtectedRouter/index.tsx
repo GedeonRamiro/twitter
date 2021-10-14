@@ -10,7 +10,7 @@ const ProtectedRouter: React.FC<RouteProps> = ({ children, ...rest }) => {
 
     useEffect(() => {
       if(!auth){
-           toast.warn('Faça o login!')
+           toast.warn('Faça o login!', {theme: 'dark'})
         }
     }, [auth])
 
